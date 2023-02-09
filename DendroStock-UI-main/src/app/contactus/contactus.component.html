@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<body>
+<div class="contactus">
+    <h1> <u>Contact Us </u></h1>
+    <p>write to US</p>
+    <!-- <form action="Home.html" method="post">
+        <input type="email" class="contact-input" placeholder="your email address..      ">
+        <br>
+        <input type="Message" class="contact-inputtwo" placeholder="Your message.. ">
+        &nbsp;&nbsp;
+        <button type="submit">send </button>
+    </form> -->
+
+    <form
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        [(ngModel)]="form.username"
+        required
+        minlength="3"
+        maxlength="20"
+        #username="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="form.email"
+        required
+        email
+        #email="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea
+          class="form-control"
+          name="comment"
+          [(ngModel)]="form.comment"
+          required
+          #comment="ngModel"
+          height="50px"
+        ></textarea>
+      </div>
+     
+ 
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Send</button>
+    </div>
+
+    <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+      Signup failed!<br />{{ errorMessage }}
+    </div>
+  </form>
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Your feedback submitted successfully!
+  </div>
+
+
+</div>
+<h2>Visit us at!</h2>
+<p>We are located at 4901 Evergreen Rd, Dearborn, MI 48128. We're looking forward to your visit!</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2950.1671132662455!2d-83.23421858438434!3d42.317634279189626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b35747403004f%3A0x37bcece74d237758!2sUniversity%20of%20Michigan-Dearborn!5e0!3m2!1sen!2sus!4v1664424666215!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</body>
+	
+<app-footer></app-footer>
+
+</html>
